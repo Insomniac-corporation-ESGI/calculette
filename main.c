@@ -2,14 +2,48 @@
 #include <stdio.h>
 #include <stderr.h>
 #include <stdint.h>
+#include <stdarg.h>
 
 // Global Constants
 #define TRUE 1
 #define FALSE 0
 
 
-int addition (int *nombreA, int *nombreB){
-	return (nombreA + nombreB);
+void choix(){
+
+	return ;
+}
+
+int addition (int nombre, ...){
+	int sum = 0;
+	
+	va_list ptr;
+
+	va_start(ptr, nombre);
+
+	for(int i = 0, i < n, ++i){
+		sum += va_arg(ptr, int);
+	}
+	
+	va_end(ptr);
+
+	return sum;
+}
+
+
+int soustraction(int premierNombre, int nombre, ...){
+	
+	va_list ptr;
+
+	va_start(ptr, nombre);
+
+	for(int i = 0, i < n, ++i){
+		premierNombre -= va_arg(ptr, int);
+	}
+	
+	va_end(ptr);
+
+	return premierNombre;
 }
 
 int main(int32_t argc, char *argv[]){
