@@ -4,98 +4,33 @@
 #include <stdint.h>
 #include <stdarg.h>
 
-// Global Constants
-#define TRUE 1
-#define FALSE 0
+// personnal libs
+#include "lib_eso.h" // stands for eval Stack Operations
+#include "lib_mso.h" // stands for memory Stack Operations
+
+// eso prototypes
 
 
-void choix(){
-
-	return ;
-}
-
-int addition (int nombre, ...){
-	int sum = 0;
-	
-	va_list ptr;
-
-	va_start(ptr, nombre);
-
-	for(int i = 0, i < n, ++i){
-		sum += va_arg(ptr, int);
-	}
-	
-	va_end(ptr);
-
-	return sum;
-}
-
-
-int soustraction(int premierNombre, int nombre, ...){
-	
-	va_list ptr;
-
-	va_start(ptr, nombre);
-
-	for(int i = 0, i < n, ++i){
-		premierNombre -= va_arg(ptr, int);
-	}
-	
-	va_end(ptr);
-
-	return premierNombre;
+void getChoice(char *stack){
+	// TODO: Process how to get past the stack
 }
 
 int main(int32_t argc, char *argv[]){
 
 
-	int8_t choix = 0;
-	int32_t nombreA, nombreB;
-	nombreA = 0;
-	nombreB = 0;
+	int8_t
 
-	if (argc == 3){
-		nombreA = argv[1];
-		nombreB = argv[2];
-	} else {
-		fprintf(STDERR, "Merci de mettre deux arguments lors de l'execution du programme. ex: ./calc 10 20");
-      		exit(1);      
+	if ( argc != 1 ){
+		fprintf(STDERR, "merci de ne pas entrer d'arguments");
+		return (-1);
 	}
 
-
-
-
-	// nettoyage du terminal avec un sys-call
+	// clean terminal using a syscall
 	system("clear");
-	// affichage menu je blinde de fprintf, c'est moche mais c'est pas si mal finalement, 
-	// je decalerais ca dans une fonction pour alleger le main.
-	fprintf(STDOUT, "BONJOUR ET BIENVENUE DANS LA CALCULATRICE\n");
-	fprintf(STDOUT, "Merci de selectionner une action a realiser, ou entrez Q ou 0 pour quitter, -1 pour les credits.\n");
-	fprintf(STDOUT, "1 - Addition\n");
-	fprintf(STDOUT, "2 - Soustraction\n");
-	fprintf(STDOUT, "3 - Multiplication\n");
-	fprintf(STDOUT, "4 - Division\n");
-	fprintf(STDOUT, "\nChoix: ");
-	fscanf(STDIN, &choix);
 
-	switch (choix){
-		case -1:
-			fprintf(STDOUT, "Merci d'utiliser le programme, produtcion par Simon 'astalios' DE BROU, supporte par sagliss.industries"
-		//	exit(0);
-			break;
-		case 0:
-			frpintf(STDOUT, "'au revoir', dit Mitterand");
-			exit(0);
-		case 1:
-			fprintf(STDOUT, "%d", addition(nombreA&, nombreB&));
-			break;
-	
-		case 2:
-			break;
-	
-		case 3:
-			break;
-	
-		case 4:
-			break;
-	
+	// creating the stack for the RPN, or NPI in french
+	fscanf(STDIN, &stack);
+	// RPN processing
+	choiceProcess(stack);
+}
+
