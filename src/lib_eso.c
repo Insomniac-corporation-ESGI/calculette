@@ -20,16 +20,25 @@ double mul(double nbrA, double nbrB){
 
 //divide /
 double div(double nbrA, double nbrB){
-	return nbrA * nbrB;
+	return nbrA / nbrB;
 }
 
 // euclidian %
-double mod(double nbrA, double nbrB){}
+double mod(double nbrA, double nbrB){
+	return nbrA % nbrB;
+}
 
 // power
-//
+double pow(double nbrA, double nbrB){
+	return pow(nbrA, nbrB);
+}
 // square root
-//
+double sqrt(double nbrA){
+	return sqrt(nbrA);
+}
 // absolute
+double fabs(double nbrA){
+	return fabs(nbrA);
+}
 
 

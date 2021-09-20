@@ -7,12 +7,12 @@ double mul(double nbrA, double nbrB);
 
 double div(double nbrA, double nbrB);
 
-// double mod()
+double mod(double nbrA, double nbrB);
 
-// double sqr()
+double pow(double nbrA, double nbrB);
 
-// double pow()
+double sqr(nbrA);
 
-// double abs()
+double abs(nbrA);
 
 
