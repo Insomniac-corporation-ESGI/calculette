@@ -9,10 +9,10 @@ double div(double nbrA, double nbrB);
 
 double mod(double nbrA, double nbrB);
 
-double pow(double nbrA, double nbrB);
+double powr(double nbrA, double nbrB);
 
-double sqr(nbrA);
+double sqr(double nbrA);
 
-double abs(nbrA);
+double abst(double nbrA);
 
 

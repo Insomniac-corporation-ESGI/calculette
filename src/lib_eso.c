@@ -29,15 +29,15 @@ double mod(double nbrA, double nbrB){
 }
 
 // power
-double pow(double nbrA, double nbrB){
+double powr(double nbrA, double nbrB){
 	return pow(nbrA, nbrB);
 }
 // square root
-double sqrt(double nbrA){
+double sqr(double nbrA){
 	return sqrt(nbrA);
 }
 // absolute
-double fabs(double nbrA){
+double abst(double nbrA){
 	return fabs(nbrA);
 }
 
