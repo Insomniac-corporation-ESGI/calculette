@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <stderr.h>
+#include <errno.h>
 #include <stdint.h>
 // #include <stdarg.h>
 
 // personnal libs
-#include "lib_eso.h" // stands for eval Stack Operations
-#include "lib_mso.h" // stands for memory Stack Operations
+#include "./lib/lib_eso.h" // stands for eval Stack Operations
+#include "./lib/lib_mso.h" // stands for memory Stack Operations
 
 // switch case function
 double switchCases(int8_t splited, double nbrB, double nbrA){
@@ -29,17 +29,17 @@ double switchCases(int8_t splited, double nbrB, double nbrA){
 		case '%':
 			return mod(nbrA,nbrB);
 
-		case 'q':
-			return quo(nbrA,nbrB);
+//		case 'q':
+//			return quo(nbrA,nbrB);
 
 		case 's':
-			return sqrt(nbrA,nbrB);
+			return sqr(nbrA,nbrB);
 
 		case 'p':
-			return pow(nbrA,nbrB);
+			return powr(nbrA,nbrB);
 
 		case 'a':
-			return fabs(nbrA,nbrB);
+			return abst(nbrA,nbrB);
 	}
 }
 

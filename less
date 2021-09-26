@@ -1,0 +1,98 @@
+src/lib_eso.c: In function ‘mod’:
+src/lib_eso.c:28:14: error: invalid operands to binary % (have ‘double’ and ‘double’)
+   28 |  return nbrA % nbrB;
+      |              ^
+src/lib_eso.c: In function ‘powr’:
+src/lib_eso.c:33:9: error: implicit declaration of function ‘pow’ [-Werror=implicit-function-declaration]
+   33 |  return pow(nbrA, nbrB);
+      |         ^~~
+src/lib_eso.c:33:9: error: incompatible implicit declaration of built-in function ‘pow’ [-Werror]
+src/lib_eso.c:5:1: note: include ‘<math.h>’ or provide a declaration of ‘pow’
+    4 | #include <stdint.h>
+  +++ |+#include <math.h>
+    5 | 
+src/lib_eso.c: In function ‘sqr’:
+src/lib_eso.c:37:9: error: implicit declaration of function ‘sqrt’ [-Werror=implicit-function-declaration]
+   37 |  return sqrt(nbrA);
+      |         ^~~~
+src/lib_eso.c:37:9: error: incompatible implicit declaration of built-in function ‘sqrt’ [-Werror]
+src/lib_eso.c:37:9: note: include ‘<math.h>’ or provide a declaration of ‘sqrt’
+src/lib_eso.c: In function ‘abst’:
+src/lib_eso.c:41:9: error: implicit declaration of function ‘fabs’ [-Werror=implicit-function-declaration]
+   41 |  return fabs(nbrA);
+      |         ^~~~
+src/lib_eso.c:41:9: error: incompatible implicit declaration of built-in function ‘fabs’ [-Werror]
+src/lib_eso.c:41:9: note: include ‘<math.h>’ or provide a declaration of ‘fabs’
+src/lib_eso.c: In function ‘mod’:
+src/lib_eso.c:29:1: error: control reaches end of non-void function [-Werror=return-type]
+   29 | }
+      | ^
+cc1: all warnings being treated as errors
+src/lib_mso.c: In function ‘push’:
+src/lib_mso.c:26:24: error: implicit declaration of function ‘malloc’ [-Werror=implicit-function-declaration]
+   26 |  Stack *newStackHead = malloc(sizeof(Stack));
+      |                        ^~~~~~
+src/lib_mso.c:26:24: error: incompatible implicit declaration of built-in function ‘malloc’ [-Werror]
+src/lib_mso.c:1:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+  +++ |+#include <stdlib.h>
+    1 | // mso memory stack operation
+src/lib_mso.c:29:23: error: ‘NULL’ undeclared (first use in this function)
+   29 |  if ( newStackHead == NULL) {
+      |                       ^~~~
+src/lib_mso.c:1:1: note: ‘NULL’ is defined in header ‘<stddef.h>’; did you forget to ‘#include <stddef.h>’?
+  +++ |+#include <stddef.h>
+    1 | // mso memory stack operation
+src/lib_mso.c:29:23: note: each undeclared identifier is reported only once for each function it appears in
+   29 |  if ( newStackHead == NULL) {
+      |                       ^~~~
+src/lib_mso.c:31:3: error: implicit declaration of function ‘fprintf’ [-Werror=implicit-function-declaration]
+   31 |   fprintf(stderr, "not enough memory for new stack allocation, exiting...");
+      |   ^~~~~~~
+src/lib_mso.c:31:3: error: incompatible implicit declaration of built-in function ‘fprintf’ [-Werror]
+src/lib_mso.c:1:1: note: include ‘<stdio.h>’ or provide a declaration of ‘fprintf’
+  +++ |+#include <stdio.h>
+    1 | // mso memory stack operation
+src/lib_mso.c:31:11: error: ‘stderr’ undeclared (first use in this function)
+   31 |   fprintf(stderr, "not enough memory for new stack allocation, exiting...");
+      |           ^~~~~~
+src/lib_mso.c:31:11: note: ‘stderr’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+src/lib_mso.c:32:10: error: ‘EXIT_FAILURE’ undeclared (first use in this function)
+   32 |   return EXIT_FAILURE;
+      |          ^~~~~~~~~~~~
+src/lib_mso.c:41:9: error: ‘EXIT_SUCCESS’ undeclared (first use in this function)
+   41 |  return EXIT_SUCCESS;
+      |         ^~~~~~~~~~~~
+src/lib_mso.c: In function ‘pop’:
+src/lib_mso.c:77:2: error: implicit declaration of function ‘free’ [-Werror=implicit-function-declaration]
+   77 |  free(stackTemp);
+      |  ^~~~
+src/lib_mso.c:77:2: error: incompatible implicit declaration of built-in function ‘free’ [-Werror]
+src/lib_mso.c:77:2: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+src/lib_mso.c: In function ‘freeStack’:
+src/lib_mso.c:85:15: error: ‘NULL’ undeclared (first use in this function)
+   85 |  if (stack != NULL ) {
+      |               ^~~~
+src/lib_mso.c:85:15: note: ‘NULL’ is defined in header ‘<stddef.h>’; did you forget to ‘#include <stddef.h>’?
+src/lib_mso.c:87:31: error: invalid type argument of ‘->’ (have ‘Stack’ {aka ‘struct s_Stack’})
+   87 |   Stack * stackTemp = (*stack)->prev;
+      |                               ^~
+src/lib_mso.c:89:3: error: incompatible implicit declaration of built-in function ‘free’ [-Werror]
+   89 |   free(stack);
+      |   ^~~~
+src/lib_mso.c:89:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+src/lib_mso.c:93:9: error: ‘EXIT_SUCCESS’ undeclared (first use in this function)
+   93 |  return EXIT_SUCCESS;
+      |         ^~~~~~~~~~~~
+src/lib_mso.c: In function ‘push’:
+src/lib_mso.c:43:1: error: control reaches end of non-void function [-Werror=return-type]
+   43 | }
+      | ^
+src/lib_mso.c: In function ‘freeStack’:
+src/lib_mso.c:94:1: error: control reaches end of non-void function [-Werror=return-type]
+   94 | }
+      | ^
+cc1: all warnings being treated as errors
+main.c:3:10: fatal error: stderr.h: No such file or directory
+    3 | #include <stderr.h>
+      |          ^~~~~~~~~~
+compilation terminated.

@@ -1,14 +1,11 @@
+
 // mso memory stack operation
+
+#include "../lib/lib_mso.h"
+
 // where the operation on the stack zill be proceed, such as pop, push, and functions to check if the formula is valid 
 
 // structure for the RPN
-
-typedef struct s_Stack {
-
-	struct s_Stack * prev;
-	double value;
-
-} Stack;
 
 // adding at the Head of the stack a new value ( i.e when the user did an sum
 // TODO: faire exemple
