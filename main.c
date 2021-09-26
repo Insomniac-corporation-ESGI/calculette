@@ -8,9 +8,8 @@
 #include "lib_eso.h" // stands for eval Stack Operations
 #include "lib_mso.h" // stands for memory Stack Operations
 
-
-// swuitch case function
-double switchCases(int8_t splited, double nbrA, double nbrB){
+// switch case function
+double switchCases(int8_t splited, double nbrB, double nbrA){
 
 	switch(splited){
 
@@ -50,14 +49,35 @@ void choiceProcess(int8_t *stack){
 
 	int8_t * splited = strtok(stack, " ");
 	
-	double stackResult = 0;
+	Stack * headStack = NULL;
+	
 
-	while ( splited != NULL ){
+	while(splited != NULL){
 		
-		stackResult += switchCases();
+		if ((stack[0] >= '0' && stack[0] <= '9') 
+			|| (stack[0] == '-' &&  stack[1] >= '0' && stack[1] <= '9' )){
+		
+			*splited = '\0';
 
-		splited = strtok(NULL, " ");
+			push(&headStack, atof(stack));
+
+			*splited = ' ';
+			
+		} else {
+		
+			push(&headStack, switchCases(*stack, pop(&headStack), pop(headStack)));
+
+		}
+		
+		stack = splited+1;
+		splited = strtok(NULL, " \0");
+
 	}
+
+
+	fprintf(stdout, "%lf", headStack->value);
+
+	freeStack(headStack);
 
 }
 
