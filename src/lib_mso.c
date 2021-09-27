@@ -81,7 +81,7 @@ int freeStack(Stack * stack ){
 
 	if (stack != NULL ) {
 
-		Stack * stackTemp = (*stack)->prev; 
+		Stack * stackTemp = stack->prev; 
 
 		free(stack);
  
