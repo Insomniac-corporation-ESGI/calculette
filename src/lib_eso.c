@@ -40,5 +40,17 @@ double sqr(double nbrA){
 double abst(double nbrA){
 	return fabs(nbrA);
 }
+// exponentiel --> e(x)
+double expo(double nbrA){
+	return exp(nbrA);
+}
+// logarithme
+double log(double nbrA){
+	return fabs(nbrA);
+}
+// logarithme base 10
+double loga10(double nbrA){
+	return log10(nbrA);
+}
 
 

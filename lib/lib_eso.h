@@ -15,4 +15,10 @@ double sqr(double nbrA);
 
 double abst(double nbrA);
 
+double expo(double nbrA);
+
+double loga(double nbrA);
+
+double loga10(double nbrA);
+
 
