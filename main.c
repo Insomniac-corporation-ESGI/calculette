@@ -1,112 +1,100 @@
+#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <errno.h>
-#include <stdint.h>
-// #include <stdarg.h>
+#include <math.h>
 
 // personnal libs
 #include "./lib/lib_eso.h" // stands for eval Stack Operations
 #include "./lib/lib_mso.h" // stands for memory Stack Operations
 
 // switch case function
-double switchCases(int8_t splited, double nbrB, double nbrA){
-
+double switchCases(char splited, double nbrB, double nbrA){
+	
 	switch(splited){
 
 		case '+':
-			return add(nbrA,nbrB);
-
+			return add(nbrA, nbrB);		
+		
 		case '-':
-			return sub(nbrA,nbrB);
+			return sub(nbrA, nbrB);
+		
+		case '/':
+			return divide(nbrA, nbrB);
 
 		case '*':
 		case 'x':
-			return mul(nbrA,nbrB);
-
-		case '/':
-			return div(nbrA,nbrB);
-
+			return mul(nbrA, nbrB);
+		
 		case '%':
-			return mod(nbrA,nbrB);
-
-//		case 'q':
-//			return quo(nbrA,nbrB);
-
+			return mod(nbrA, nbrB);
+		
 		case 's':
-			return sqr(nbrA,nbrB);
-
+			return sqr(nbrB);
+		
 		case 'p':
-			return powr(nbrA,nbrB);
-
+			return powr(nbrA, nbrB);
+		
 		case 'a':
-			return abst(nbrA,nbrB);
+			return abst(nbrB);
 	}
+	
+	return 0;
 }
 
 // choice process 
-void choiceProcess(int8_t *stack){	
-	// TODO: Process how to get past the stack
+void choiceProcess(char *stack){	
 
-	int8_t * splited = strtok(stack, " ");
+	char * splited = strtok(stack, " ");
 	
 	Stack * headStack = NULL;
-	
 
 	while(splited != NULL){
 		
-		if ((stack[0] >= '0' && stack[0] <= '9') 
-			|| (stack[0] == '-' &&  stack[1] >= '0' && stack[1] <= '9' )){
+		if ((splited[0] >= '0' && splited[0] <= '9') 
+			|| (splited[0] == '-' &&  splited[1] >= '0' && splited[1] <= '9' )){
 		
-			*splited = '\0';
-
-			push(&headStack, atof(stack));
-
-			*splited = ' ';
+			push(&headStack, atof(splited));
 			
 		} else {
-		
-			push(&headStack, switchCases(*stack, pop(&headStack), pop(headStack)));
-
+			if(splited[0] != 'a' && splited[0] != 's'){
+				double b = pop(&headStack);
+				double a = pop(&headStack);
+				push(&headStack, switchCases(*splited, b, a));
+			} else {
+				push(&headStack, switchCases(*splited, pop(&headStack), 0));
+			}
 		}
 		
-		stack = splited+1;
 		splited = strtok(NULL, " \0");
 
 	}
 
-
 	fprintf(stdout, "%lf", headStack->value);
 
 	freeStack(headStack);
-
 }
 
-int main(int32_t argc, int8_t *argv[]){
+int main(void){
 
 
-	int8_t *stack;
+	char *stack;
 
-	stack = malloc(sizeof(int8_t) * 512 + 1);
+	stack = malloc(sizeof(char) * 512 + 1);
 
 	if (stack == NULL){
 		fprintf(stderr, "Out of memory error, exiting...");
 		return EXIT_FAILURE;
 	}
 
-
-	if ( argc != 1 ){
-		fprintf(stderr, "merci de ne pas entrer d'arguments");
-		return EXIT_FAILURE;
-	}
-
 	// clean terminal using a syscall
-	system("clear");
+	if(system("clear"))
+		fprintf(stderr, "failed to clear terminal screen!");
 
 	// creating the stack for the RPN, or NPI in french
-	fgets(stack, sizeof(int8_t) * 512, stdin) ;
+	if(!fgets(stack, sizeof(char) * 512, stdin)) 
+		fprintf(stderr,"failed to capture stdin");
 	// RPN processing
 	choiceProcess(stack);
-
 
 	free(stack);
 	return EXIT_SUCCESS;

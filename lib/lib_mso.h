@@ -8,7 +8,7 @@ typedef struct s_Stack {
 
 } Stack;
 
-int push(Stack ** stack, double newVal);
+void push(Stack ** stack, double newVal);
 
 double pop(Stack ** stack);
 
