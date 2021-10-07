@@ -1,86 +1,77 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <errno.h>
-#include <stdint.h>
 #include <math.h>
-// #include <stdarg.h>
 
 // personnal libs
-//#include "./lib/lib_eso.h" // stands for eval Stack Operations
+#include "./lib/lib_eso.h" // stands for eval Stack Operations
 #include "./lib/lib_mso.h" // stands for memory Stack Operations
 
 // switch case function
 double switchCases(char splited, double nbrB, double nbrA){
 	
-	printf("%c", splited);
 	switch(splited){
 
 		case '+':
-			printf("%c", splited);
-			return nbrA + nbrB;		
+			return add(nbrA, nbrB);		
+		
 		case '-':
-			printf("%c", splited);
-			return nbrA - nbrB;
+			return sub(nbrA, nbrB);
+		
 		case '/':
-			printf("%c", splited);
-			return nbrA / nbrB;
-//		case 'q':
-//			return quo(nbrA,nbrB);
+			return divide(nbrA, nbrB);
 
+		case '*':
+		case 'x':
+			return mul(nbrA, nbrB);
+		
 		case '%':
-			printf("%c", splited);
-			return fmod(nbrA, nbrB);
+			return mod(nbrA, nbrB);
+		
 		case 's':
-			printf("%c", splited);
-			return sqrt(nbrA);
+			return sqr(nbrB);
+		
 		case 'p':
-			printf("%c", splited);
-			return pow(nbrA,nbrB);
+			return powr(nbrA, nbrB);
+		
 		case 'a':
-			printf("%c", splited);
-			return fabs(nbrA);
+			return abst(nbrB);
 	}
-	printf("retour ici \n");
+	
 	return 0;
 }
 
 // choice process 
 void choiceProcess(char *stack){	
-	// TODO: Process how to get past the stack
 
 	char * splited = strtok(stack, " ");
 	
 	Stack * headStack = NULL;
-	
 
 	while(splited != NULL){
 		
-		if ((stack[0] >= '0' && stack[0] <= '9') 
-			|| (stack[0] == '-' &&  stack[1] >= '0' && stack[1] <= '9' )){
+		if ((splited[0] >= '0' && splited[0] <= '9') 
+			|| (splited[0] == '-' &&  splited[1] >= '0' && splited[1] <= '9' )){
 		
-			*splited = '\0';
-
-			push(&headStack, atof(stack));
-
-			*splited = ' ';
+			push(&headStack, atof(splited));
 			
 		} else {
-		
-			push(&headStack, switchCases(*stack, pop(&headStack), pop(&headStack)));
-
+			if(splited[0] != 'a' && splited[0] != 's'){
+				double b = pop(&headStack);
+				double a = pop(&headStack);
+				push(&headStack, switchCases(*splited, b, a));
+			} else {
+				push(&headStack, switchCases(*splited, pop(&headStack), 0));
+			}
 		}
 		
-		stack = splited+1;
 		splited = strtok(NULL, " \0");
 
 	}
 
-
 	fprintf(stdout, "%lf", headStack->value);
 
 	freeStack(headStack);
-
 }
 
 int main(void){
@@ -104,7 +95,6 @@ int main(void){
 		fprintf(stderr,"failed to capture stdin");
 	// RPN processing
 	choiceProcess(stack);
-
 
 	free(stack);
 	return EXIT_SUCCESS;
