@@ -45,8 +45,8 @@ double expo(double nbrA){
 	return exp(nbrA);
 }
 // logarithme
-double log(double nbrA){
-	return fabs(nbrA);
+double loga(double nbrA){
+	return log(nbrA);
 }
 // logarithme base 10
 double loga10(double nbrA){
