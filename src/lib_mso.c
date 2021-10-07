@@ -14,11 +14,11 @@
 //
 
 /* 
-
+ 
 
 */
 
-int push(Stack ** stack, double newVal){
+void push(Stack ** stack, double newVal){
 
 	Stack *newStackHead = malloc(sizeof(Stack));
 	
@@ -26,7 +26,7 @@ int push(Stack ** stack, double newVal){
 	if ( newStackHead == NULL) {
 
 		fprintf(stderr, "not enough memory for new stack allocation, exiting...");
-		return EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 		
 	newStackHead->prev = *stack;
@@ -34,9 +34,6 @@ int push(Stack ** stack, double newVal){
 	newStackHead->value = newVal;
 
 	* stack = newStackHead;
-
-	return EXIT_SUCCESS;
-
 }
 
 // can return the element of the stack you decided to take out

@@ -12,37 +12,37 @@
 
 // switch case function
 double switchCases(char splited, double nbrB, double nbrA){
-
+	
+	printf("%c", splited);
 	switch(splited){
 
 		case '+':
+			printf("%c", splited);
 			return nbrA + nbrB;		
-			break;
 		case '-':
+			printf("%c", splited);
 			return nbrA - nbrB;
-			break;
 		case '/':
+			printf("%c", splited);
 			return nbrA / nbrB;
-			break;
 //		case 'q':
 //			return quo(nbrA,nbrB);
 
 		case '%':
+			printf("%c", splited);
 			return fmod(nbrA, nbrB);
-			break;
 		case 's':
+			printf("%c", splited);
 			return sqrt(nbrA);
-			break;
 		case 'p':
+			printf("%c", splited);
 			return pow(nbrA,nbrB);
-			break;
 		case 'a':
+			printf("%c", splited);
 			return fabs(nbrA);
-			break;
-		default:
-			return EXIT_FAILURE;
-			break;
 	}
+	printf("retour ici \n");
+	return 0;
 }
 
 // choice process 
